@@ -43,20 +43,17 @@ q:before, q:after {
 	content: none;
 }
 table {
-	border-collapse: collapse;
+  border-collapse: collapse;
 	border-spacing: 0;
 }
 /* start---------------------------------------------------------------------- */
 body{
   background-color:   #fffff0 ;
   font-family: 'Roboto', sans-serif;
-
+  
   --input-font: 1rem;
-  --heading-font: 2rem;
+  --heading-font: 1rem;
 }
-/* checkbox styling */
-
-
 .main-container{
   display: flex;
   flex-direction: column;
@@ -68,6 +65,31 @@ body{
   font-size: 4rem;
   font-family: 'Merienda', cursive;
 }
+/* add book container */
+.book-heading-container {
+  display: flex;
+  align-items: center;
+}
+.book-heading-container h1 {
+  font-weight:bold ;
+  font-size: var(--heading-font);
+}
+.input-container #hide-btn {
+  height: 2rem;
+  width: 3.5rem;
+  text-align: center;
+  background-color: rgb(98, 121, 255);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: 0;
+}
+.input-container #hide-btn:hover {
+  border: 2px solid darkblue;
+}
+
 .input-container{
   /* display: none; */
   border: 1px solid black;
@@ -86,7 +108,7 @@ body{
   gap: 0.5rem;
 }
 .input-container #book_name, #book_author, #page_num {
-    width: 8rem; 
+  width: 8rem; 
     height: 2rem;
     font-size: var(--input-font);
     border: 1px solid rgb(177, 175, 175);
@@ -122,19 +144,3 @@ body{
   border: 2px solid darkblue;
 }
 
-
-.input-container #hide-btn {
-  height: 2rem;
-  width: 3.5rem;
-  text-align: center;
-  background-color: rgb(98, 121, 255);
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 1px solid black;
-  margin-left: auto;
-  margin-right: 0;
-}
-.input-container #hide-btn:hover {
-  border: 2px solid darkblue;
-}
