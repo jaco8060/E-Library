@@ -55,19 +55,31 @@ function addBookCard(book) {
   const pages_heading = document.createElement("h1");
   const read_heading = document.createElement("h1");
   const book_id = document.createElement("h1");
+
+  const remove_img = document.createElement("img");
+
+  const remove_book = document.createElement("button");
   //need to iterate through the list of objects and delete the current containers and create the new container with updated book objects each time.
 
   title_heading.textContent = book.title;
   author_heading.textContent = book.author;
   pages_heading.textContent = book.pages;
   read_heading.textContent = book.read;
-  book_id.textContent = book.id;
+  book_id.textContent = book.index;
+
+  remove_img.src = "img/trash-can.svg";
+  remove_img.alt = "Remove Book"; // Add an alt attribute for accessibility
+
+  remove_book.appendChild(remove_img);
+  remove_book.classList.add("removeBook");
 
   book_container.appendChild(title_heading);
   book_container.appendChild(author_heading);
   book_container.appendChild(pages_heading);
   book_container.appendChild(read_heading);
   book_container.appendChild(book_id);
+  book_container.appendChild(remove_book);
+
   const library_container = document.querySelector(".library-container");
 
   library_container.appendChild(book_container);

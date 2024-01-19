@@ -158,3 +158,20 @@ body{
   flex-wrap: wrap;
 
 }
+
+.removeBook {
+  background: none; /* Make the button's background transparent */
+  border: none; /* Remove the border */
+  padding: 0; /* Remove padding */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  width: auto; /* Adjust width to fit the image */
+  height: auto; /* Adjust height to fit the image */
+  display: flex; /* Optional: For better control of the inner image alignment */
+  align-items: center; /* Optional: Aligns the image in the center vertically */
+  justify-content: center; /* Optional: Aligns the image in the center horizontally */
+}
+
+.removeBook img {
+  width: 100%; /* Image takes the full width of the button */
+  height: 2rem; /* Set the desired height */
+}
