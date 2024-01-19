@@ -131,14 +131,14 @@ function removeBook(event) {
   //then i need to update the DOM index's by querySelecting all the book-containers and changing the book num by targeting the .book-containers .book-num and changing the book num to be the same as the array index + 1
 }
 
-
-function updateBookCards {
+function updateBookCards() {
   // Select all elements with the class '.book-num'
-  const bookNumElements = document.querySelectorAll(".book-container .book-num");
+  const bookNumElements = document.querySelectorAll(
+    ".book-container .book-num"
+  );
 
   // Iterate over each element and update its text content
   bookNumElements.forEach((item, index) => {
     item.textContent = `Book ${index + 1}`; // Update the book number
   });
-
 }
