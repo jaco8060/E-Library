@@ -1,5 +1,5 @@
 const myLibrary = [];
-let bookIndex = 0; // This counter is outside the Book constructor
+let bookID = 0; // This counter is outside the Book constructor
 
 //constructor for book
 function Book(title, author, pages, read) {
@@ -7,7 +7,8 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read ? "Read" : "Not Read"; // Using ternary operator
-  this.index = bookIndex++; // Assign the current index and then increment the counter
+  this.id = bookID++; // Assign the current index and then increment the counter
+  this.index = myLibrary.indexOf(Book.id);
 }
 
 const bookForm = document.getElementById("book-input");
@@ -53,17 +54,20 @@ function addBookCard(book) {
   const author_heading = document.createElement("h1");
   const pages_heading = document.createElement("h1");
   const read_heading = document.createElement("h1");
+  const book_id = document.createElement("h1");
+  //need to iterate through the list of objects and delete the current containers and create the new container with updated book objects each time.
 
   title_heading.textContent = book.title;
   author_heading.textContent = book.author;
   pages_heading.textContent = book.pages;
   read_heading.textContent = book.read;
+  book_id.textContent = book.id;
 
   book_container.appendChild(title_heading);
   book_container.appendChild(author_heading);
   book_container.appendChild(pages_heading);
   book_container.appendChild(read_heading);
-
+  book_container.appendChild(book_id);
   const library_container = document.querySelector(".library-container");
 
   library_container.appendChild(book_container);
