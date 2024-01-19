@@ -116,7 +116,7 @@ function removeBook(event) {
 
   //when i click on button it should remove the book from the array by matching the dataset bookid with the array bookid
   //then splice that element when the index is found using the id
-  const matchingIndex = myLibrary.indexOf(event.currentTarget.dataset.bookId);
+  const matchingIndex = myLibrary.findIndex((book) => book.id === bookId);
 
   if (matchingIndex > -1) {
     // Remove the book from the array
