@@ -32,6 +32,7 @@ function addBookToLibrary(e) {
 
   //add book to library list
   myLibrary.push(book);
+
   book.index = myLibrary.indexOf(book); // Set the index after adding the book to the array
 
   addBookCard(book);
@@ -65,11 +66,14 @@ function addBookCard(book) {
   author_heading.textContent = book.author;
   pages_heading.textContent = book.pages;
   read_heading.textContent = book.read;
-  book_id.textContent = book.index;
+  book_id.textContent = `Book ${book.index + 1}`;
 
   remove_img.src = "img/trash-can.svg";
   remove_img.alt = "Remove Book"; // Add an alt attribute for accessibility
 
+  remove_book.dataset.bookId = book.index; // Assuming book.id is your unique identifier
+
+  remove_book.addEventListener("click", removeBook);
   remove_book.appendChild(remove_img);
   remove_book.classList.add("removeBook");
 
@@ -85,9 +89,9 @@ function addBookCard(book) {
   library_container.appendChild(book_container);
 }
 const hideBtn = document.getElementById("hide-btn");
-hideBtn.addEventListener("click", hideAndshow);
+hideBtn.addEventListener("click", toggleFormVisibility);
 
-function hideAndshow(e) {
+function toggleFormVisibility(e) {
   const input_groups = document.querySelectorAll(".input-group");
   const submit = document.querySelector("#submit");
 
@@ -106,12 +110,41 @@ function hideAndshow(e) {
   }
 }
 
-function removeBook(bookToRemove) {
-  // Find the index of the book to remove
-  const index = myLibrary.indexOf(bookToRemove);
+function removeBook(event) {
+  const bookId = event.target.dataset.bookId; // Retrieve the stored book index
+  const index = parseInt(bookId, 10); // Convert it to an integer
 
-  // If the book is found (index !== -1), remove it from the array
-  if (index !== -1) {
-    myLibrary.splice(index, 1);
+  // Check if the book exists in the array and remove it
+  if (index >= 0 && index < myLibrary.length) {
+    myLibrary.splice(index, 1); // Remove the book from the array
+    event.target.closest(".book-container").remove(); // Remove the book card from the UI
   }
+
+  // After removing the book, update the indices
+  updateBookIndexes();
+  updateBookCards();
+}
+
+function updateBookIndexes() {
+  //aux function for removeBook
+  myLibrary.forEach((book, index) => {
+    book.index = index;
+  });
+}
+function updateBookCards() {
+  //aux function for removeBook
+  const bookCards = document.querySelectorAll(".book-container");
+  bookCards.forEach((card, index) => {
+    // Assuming you have a button with the class 'removeBook' inside each card
+    const removeButton = card.querySelector(".removeBook");
+    if (removeButton) {
+      removeButton.dataset.bookId = index;
+    }
+
+    // Update displayed index if you're showing it in the DOM
+    const bookIdElement = card.querySelector(".book-id"); // Adjust the selector as needed
+    if (bookIdElement) {
+      bookIdElement.textContent = `Book ${index + 1}`;
+    }
+  });
 }
