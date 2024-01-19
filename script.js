@@ -53,7 +53,7 @@ function addBookCard(book) {
   const author_heading = document.createElement("h1");
   const pages_heading = document.createElement("h1");
   const read_heading = document.createElement("h1");
-  const book_id = document.createElement("h1");
+  const book_num = document.createElement("h1");
 
   const remove_img = document.createElement("img");
 
@@ -64,12 +64,12 @@ function addBookCard(book) {
   author_heading.textContent = book.author;
   pages_heading.textContent = book.pages;
   read_heading.textContent = book.read;
-  book_id.textContent = `Book ${myLibrary.indexOf(book) + 1}`;
+  book_num.textContent = `Book ${myLibrary.indexOf(book) + 1}`;
 
   remove_img.src = "img/trash-can.svg";
   remove_img.alt = "Remove Book"; // Add an alt attribute for accessibility
 
-  remove_book.dataset.bookId = book.index; // Assuming book.id is your unique identifier
+  remove_book.dataset.bookId = book.id; // create dataset id for each book
 
   remove_book.addEventListener("click", removeBook);
   remove_book.appendChild(remove_img);
@@ -79,7 +79,8 @@ function addBookCard(book) {
   book_container.appendChild(author_heading);
   book_container.appendChild(pages_heading);
   book_container.appendChild(read_heading);
-  book_container.appendChild(book_id);
+  book_container.appendChild(book_num);
+  book_num.classList.add("book-num");
   book_container.appendChild(remove_book);
   book_container.classList.add("book-container");
   const library_container = document.querySelector(".library-container");
@@ -109,19 +110,10 @@ function toggleFormVisibility(e) {
 }
 
 function removeBook(event) {
-  const bookId = event.currentTarget.dataset.bookId;
-  // Retrieve the stored book index
+  console.log(event.currentTarget.dataset.bookId);
+  console.log(myLibrary);
 
-  console.log(bookId);
-  const index = parseInt(bookId, 10); // Convert it to an integer
-
-  // Check if the book exists in the array and remove it
-  if (index >= 0 && index < myLibrary.length) {
-    myLibrary.splice(index, 1); // Remove the book from the array
-    event.currentTarget.closest(".book-container").remove(); // Remove the book card from the UI
-  }
-
-  //Update the book index of the array and the
-  updateBookIndexes();
-  updateBookCards();
+  //when i click on button it should remove the book from the array by matching the dataset bookid with the array bookid
+  //then splice that element when the index is found using the id
+  //then i need to update the DOM index's by querySelecting all the book-containers and changing the book num by targeting the .book-containers .book-num and changing the book num to be the same as the array index + 1
 }
