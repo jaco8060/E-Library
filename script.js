@@ -64,7 +64,7 @@ function addBookCard(book) {
   author_heading.textContent = book.author;
   pages_heading.textContent = book.pages;
   read_heading.textContent = book.read;
-  book_id.textContent = `Book ${myLibrary.indexOf(book)}`;
+  book_id.textContent = `Book ${myLibrary.indexOf(book) + 1}`;
 
   remove_img.src = "img/trash-can.svg";
   remove_img.alt = "Remove Book"; // Add an alt attribute for accessibility
