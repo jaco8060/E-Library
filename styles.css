@@ -144,3 +144,9 @@ body{
   border: 2px solid darkblue;
 }
 
+/* Library container */
+
+.library-container{
+  display: flex;
+  width: 50%;
+}

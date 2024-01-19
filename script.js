@@ -6,7 +6,7 @@ function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read ? "read" : "not read"; // Using ternary operator
+  this.read = read ? "Read" : "Not Read"; // Using ternary operator
   this.index = bookIndex++; // Assign the current index and then increment the counter
 }
 
@@ -67,4 +67,25 @@ function addBookCard(book) {
   const library_container = document.querySelector(".library-container");
 
   library_container.appendChild(book_container);
+}
+const hideBtn = document.getElementById("hide-btn");
+hideBtn.addEventListener("click", hideAndshow);
+
+function hideAndshow(e) {
+  const input_groups = document.querySelectorAll(".input-group");
+  const submit = document.querySelector("#submit");
+
+  if (e.target.value == "Hide") {
+    e.target.value = "Show";
+    input_groups.forEach((input_group) => {
+      input_group.style.display = "none";
+    });
+    submit.style.display = "none";
+  } else {
+    e.target.value = "Hide";
+    input_groups.forEach((input_group) => {
+      input_group.style.display = "block";
+    });
+    submit.style.display = "block";
+  }
 }
