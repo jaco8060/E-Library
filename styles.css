@@ -200,11 +200,17 @@ body{
 }
 .book-card-group h1 {
   font-size: 1.5rem;
+ font-weight: bold;
+}
+
+/* target # of pages h2 */
+.book-card-group:nth-child(4) h2 { 
+  font-size: 1.5rem;
  
 }
 
 .book-card-group h2 {
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-align: center;
   
 }
