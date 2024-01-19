@@ -145,8 +145,14 @@ body{
 }
 
 /* Library container */
+.library-title{
+  align-self: flex-start;
+  margin-left: 15%;
+  font-size: 
+}
 
 .library-container{
   display: flex;
   width: 50%;
+  flex-wrap: wrap;
 }
