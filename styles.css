@@ -154,9 +154,11 @@ body{
 
 .library-container{
   display: flex;
-  width: 50%;
+  width: 60%;
   flex-wrap: wrap;
-
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 5rem;
 }
 
 .removeBook {
@@ -174,4 +176,40 @@ body{
 .removeBook img {
   width: 100%; /* Image takes the full width of the button */
   height: 2rem; /* Set the desired height */
+}
+
+
+.book-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+
+.book-card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.book-num {
+  font-size: 1.3rem;
+}
+.book-card-group h1 {
+  font-size: 1.5rem;
+ 
+}
+
+.book-card-group h2 {
+  font-size: 1rem;
+  text-align: center;
+  
+}
+
+.read-status{
+  margin-top: 1rem;
+  text-align: center;
 }
