@@ -8,7 +8,6 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read ? "Read" : "Not Read"; // Using ternary operator
   this.id = bookID++; // Assign the current index and then increment the counter
-  this.index = myLibrary.indexOf(Book.id);
 }
 
 const bookForm = document.getElementById("book-input");
@@ -33,6 +32,7 @@ function addBookToLibrary(e) {
 
   //add book to library list
   myLibrary.push(book);
+  book.index = myLibrary.indexOf(book); // Set the index after adding the book to the array
 
   addBookCard(book);
 
@@ -91,5 +91,15 @@ function hideAndshow(e) {
       input_group.style.display = "flex";
     });
     submit.style.display = "block";
+  }
+}
+
+function removeBook(bookToRemove) {
+  // Find the index of the book to remove
+  const index = myLibrary.indexOf(bookToRemove);
+
+  // If the book is found (index !== -1), remove it from the array
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
   }
 }
