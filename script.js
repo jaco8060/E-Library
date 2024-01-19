@@ -110,10 +110,35 @@ function toggleFormVisibility(e) {
 }
 
 function removeBook(event) {
-  console.log(event.currentTarget.dataset.bookId);
+  const bookId = parseInt(event.currentTarget.dataset.bookId, 10); //convert dataset value to integer
+  console.log(bookId);
   console.log(myLibrary);
 
   //when i click on button it should remove the book from the array by matching the dataset bookid with the array bookid
   //then splice that element when the index is found using the id
+  const matchingIndex = myLibrary.indexOf(event.currentTarget.dataset.bookId);
+
+  if (matchingIndex > -1) {
+    // Remove the book from the array
+    myLibrary.splice(matchingIndex, 1);
+
+    // Remove the book card from the UI
+    event.currentTarget.closest(".book-container").remove();
+
+    // Update the remaining book cards
+    updateBookCards();
+  }
   //then i need to update the DOM index's by querySelecting all the book-containers and changing the book num by targeting the .book-containers .book-num and changing the book num to be the same as the array index + 1
+}
+
+
+function updateBookCards {
+  // Select all elements with the class '.book-num'
+  const bookNumElements = document.querySelectorAll(".book-container .book-num");
+
+  // Iterate over each element and update its text content
+  bookNumElements.forEach((item, index) => {
+    item.textContent = `Book ${index + 1}`; // Update the book number
+  });
+
 }
