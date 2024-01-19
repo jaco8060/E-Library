@@ -28,10 +28,12 @@ function addBookToLibrary(e) {
     read_check.checked
   );
 
-  console.log(book.title, book.author, book.pages, book.read, book.index);
-
   //add book to library list
   myLibrary.push(book);
+
+  //remove no books in your library
+  const empty_library = document.querySelector(".empty-library");
+  empty_library.style.display = "none";
 
   addBookCard(book);
 
@@ -40,10 +42,6 @@ function addBookToLibrary(e) {
   book_author.value = ""; // Sets the book author to empty
   page_num.value = ""; // Sets the number of pages to empty or a default value like '0'
   read_check.checked = false; // Unchecks the checkbox
-
-  //create book card
-
-  console.log(myLibrary);
 }
 
 function addBookCard(book) {
@@ -134,9 +132,6 @@ function toggleFormVisibility(e) {
 
 function removeBook(event) {
   const bookId = parseInt(event.currentTarget.dataset.bookId, 10); //convert dataset value to integer
-  console.log(bookId);
-  console.log(myLibrary);
-
   //when i click on button it should remove the book from the array by matching the dataset bookid with the array bookid
   //then splice that element when the index is found using the id
   const matchingIndex = myLibrary.findIndex((book) => book.id === bookId);
@@ -152,6 +147,10 @@ function removeBook(event) {
     updateBookCards();
   }
   //then i need to update the DOM index's by querySelecting all the book-containers and changing the book num by targeting the .book-containers .book-num and changing the book num to be the same as the array index + 1
+  const empty_library = document.querySelector(".empty-library");
+  if (myLibrary.length == 0) {
+    empty_library.style.display = "block";
+  }
 }
 
 function updateBookCards() {
