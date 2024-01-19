@@ -84,7 +84,7 @@ function hideAndshow(e) {
   } else {
     e.target.value = "Hide";
     input_groups.forEach((input_group) => {
-      input_group.style.display = "block";
+      input_group.style.display = "flex";
     });
     submit.style.display = "block";
   }
