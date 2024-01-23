@@ -1,13 +1,23 @@
 const myLibrary = [];
 let bookID = 0; // This counter is outside the Book constructor
 
-//constructor for book
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read ? "Read" : "Not Read"; // Using ternary operator
-  this.id = bookID++; // Assign the current index and then increment the counter
+// //constructor for book
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read ? "Read" : "Not Read"; // Using ternary operator
+//   this.id = bookID++; // Assign the current index and then increment the counter
+// }
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read ? "Read" : "Not Read";
+    this.id = bookID++;
+  }
 }
 
 const bookForm = document.getElementById("book-input");
